@@ -1,25 +1,20 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from "react"
+import classnames from "classnames"
 
-import { User } from 'api/githubAPI'
-import styles from './UserWithAvatar.module.css'
+import { User } from "api/githubAPI"
+import styles from "./UserWithAvatar.module.css"
 
 interface UserAvatarProps {
   user: User
-  orientation?: 'vertical' | 'horizontal'
+  orientation?: "vertical" | "horizontal"
   link?: boolean
   classes?: { [key: string]: string }
 }
 
-export const UserWithAvatar = ({
-  user,
-  orientation = 'vertical',
-  link = true,
-  classes = {}
-}: UserAvatarProps) => {
+export const UserWithAvatar = ({ user, orientation = "vertical", link = true, classes = {} }: UserAvatarProps) => {
   const linkClassnames = classnames(styles.issueUser, {
-    [styles.vertical]: orientation === 'vertical',
-    [styles.horizontal]: orientation === 'horizontal'
+    [styles.vertical]: orientation === "vertical",
+    [styles.horizontal]: orientation === "horizontal"
   })
 
   const avatarClassnames = classnames(styles.avatar, classes.avatar)

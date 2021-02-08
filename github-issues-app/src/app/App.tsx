@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
-import './App.css'
+import React, { useState } from "react"
+import "./App.css"
 
-import { RepoSearchForm } from 'features/repoSearch/RepoSearchForm'
-import { IssuesListPage } from 'features/issuesList/IssuesListPage'
-import { IssueDetailsPage } from 'features/issueDetails/IssueDetailsPage'
+import { RepoSearchForm } from "features/repoSearch/RepoSearchForm"
+import { IssuesListPage } from "features/issuesList/IssuesListPage"
+import { IssueDetailsPage } from "features/issueDetails/IssueDetailsPage"
 
-const ORG = 'rails'
-const REPO = 'rails'
+const ORG = "rails"
+const REPO = "rails"
 
 type CurrentDisplay =
   | {
-      type: 'issues'
+      type: "issues"
     }
   | {
-      type: 'comments'
+      type: "comments"
       issueId: number
     }
 
@@ -22,7 +22,7 @@ const App: React.FC = () => {
   const [repo, setRepo] = useState(REPO)
   const [page, setPage] = useState(1)
   const [currentDisplay, setCurrentDisplay] = useState<CurrentDisplay>({
-    type: 'issues'
+    type: "issues"
   })
 
   const setOrgAndRepo = (org: string, repo: string) => {
@@ -35,24 +35,19 @@ const App: React.FC = () => {
   }
 
   const showIssuesList = () => {
-    setCurrentDisplay({ type: 'issues' })
+    setCurrentDisplay({ type: "issues" })
   }
 
   const showIssueComments = (issueId: number) => {
-    setCurrentDisplay({ type: 'comments', issueId })
+    setCurrentDisplay({ type: "comments", issueId })
   }
 
   let content
 
-  if (currentDisplay.type === 'issues') {
+  if (currentDisplay.type === "issues") {
     content = (
       <React.Fragment>
-        <RepoSearchForm
-          org={org}
-          repo={repo}
-          setOrgAndRepo={setOrgAndRepo}
-          setJumpToPage={setJumpToPage}
-        />
+        <RepoSearchForm org={org} repo={repo} setOrgAndRepo={setOrgAndRepo} setJumpToPage={setJumpToPage} />
         <IssuesListPage
           org={org}
           repo={repo}
@@ -65,15 +60,7 @@ const App: React.FC = () => {
   } else {
     const { issueId } = currentDisplay
     const key = `${org}/${repo}/${issueId}`
-    content = (
-      <IssueDetailsPage
-        key={key}
-        org={org}
-        repo={repo}
-        issueId={issueId}
-        showIssuesList={showIssuesList}
-      />
-    )
+    content = <IssueDetailsPage key={key} org={org} repo={repo} issueId={issueId} showIssuesList={showIssuesList} />
   }
 
   return <div className="App">{content}</div>

@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import ReactMarkdown from 'react-markdown'
-import classnames from 'classnames'
+import React, { useState, useEffect } from "react"
+import ReactMarkdown from "react-markdown"
+import classnames from "classnames"
 
-import { insertMentionLinks } from 'utils/stringUtils'
-import { getIssue, getComments, Issue, Comment } from 'api/githubAPI'
-import { IssueLabels } from 'components/IssueLabels'
+import { insertMentionLinks } from "utils/stringUtils"
+import { getIssue, getComments, Issue, Comment } from "api/githubAPI"
+import { IssueLabels } from "components/IssueLabels"
 
-import { IssueMeta } from './IssueMeta'
-import { IssueComments } from './IssueComments'
+import { IssueMeta } from "./IssueMeta"
+import { IssueComments } from "./IssueComments"
 
-import styles from './IssueDetailsPage.module.css'
-import './IssueDetailsPage.css'
+import styles from "./IssueDetailsPage.module.css"
+import "./IssueDetailsPage.css"
 
 interface IDProps {
   org: string
@@ -19,12 +19,7 @@ interface IDProps {
   showIssuesList: () => void
 }
 
-export const IssueDetailsPage = ({
-  org,
-  repo,
-  issueId,
-  showIssuesList
-}: IDProps) => {
+export const IssueDetailsPage = ({ org, repo, issueId, showIssuesList }: IDProps) => {
   const [issue, setIssue] = useState<Issue | null>(null)
   const [comments, setComments] = useState<Comment[]>([])
   const [commentsError, setCommentsError] = useState<Error | null>(null)
@@ -83,17 +78,14 @@ export const IssueDetailsPage = ({
     let renderedComments = <IssueComments issue={issue} comments={comments} />
 
     content = (
-      <div className={classnames('issueDetailsPage', styles.issueDetailsPage)}>
+      <div className={classnames("issueDetailsPage", styles.issueDetailsPage)}>
         <h1 className="issue-detail__title">{issue.title}</h1>
         {backToIssueListButton}
         <IssueMeta issue={issue} />
         <IssueLabels labels={issue.labels} className={styles.issueLabels} />
         <hr className={styles.divider} />
         <div className={styles.summary}>
-          <ReactMarkdown
-            className={'testing'}
-            source={insertMentionLinks(issue.body)}
-          />
+          <ReactMarkdown className={"testing"} source={insertMentionLinks(issue.body)} />
         </div>
         <hr className={styles.divider} />
         <ul>{renderedComments}</ul>

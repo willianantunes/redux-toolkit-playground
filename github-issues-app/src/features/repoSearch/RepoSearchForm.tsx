@@ -1,7 +1,7 @@
-import React, { useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent } from "react"
 
-import './pure-forms.css'
-import './pure-buttons.css'
+import "./pure-forms.css"
+import "./pure-buttons.css"
 
 interface Props {
   org: string
@@ -13,15 +13,10 @@ interface Props {
 type InputEvent = ChangeEvent<HTMLInputElement>
 type ChangeHandler = (e: InputEvent) => void
 
-export const RepoSearchForm = ({
-  org,
-  repo,
-  setOrgAndRepo,
-  setJumpToPage
-}: Props) => {
+export const RepoSearchForm = ({ org, repo, setOrgAndRepo, setJumpToPage }: Props) => {
   const [currentOrg, setCurrentOrg] = useState(org)
   const [currentRepo, setCurrentRepo] = useState(repo)
-  const [currentPageText, setCurrentPageText] = useState('1')
+  const [currentPageText, setCurrentPageText] = useState("1")
 
   const onOrgChanged: ChangeHandler = e => {
     setCurrentOrg(e.target.value)
@@ -71,11 +66,7 @@ export const RepoSearchForm = ({
         <label htmlFor="jumpToPage" style={{ marginRight: 5 }}>
           Issues Page:
         </label>
-        <input
-          name="jumpToPage"
-          value={currentPageText}
-          onChange={onCurrentPageChanged}
-        />
+        <input name="jumpToPage" value={currentPageText} onChange={onCurrentPageChanged} />
         <button
           type="button"
           className="pure-button pure-button-primary"

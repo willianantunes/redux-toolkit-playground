@@ -1,7 +1,7 @@
-import React from 'react'
-import classnames from 'classnames'
+import React from "react"
+import classnames from "classnames"
 
-import { Label } from 'api/githubAPI'
+import { Label } from "api/githubAPI"
 
 interface IssueLabelsProps {
   labels: Label[]
@@ -9,7 +9,7 @@ interface IssueLabelsProps {
 }
 
 export const IssueLabels = ({ labels, className }: IssueLabelsProps) => (
-  <div className={classnames('issue__labels', className)}>
+  <div className={classnames("issue__labels", className)}>
     {labels.map(label => (
       <span
         key={label.id}

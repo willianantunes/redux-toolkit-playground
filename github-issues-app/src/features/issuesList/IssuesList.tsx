@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import { Issue } from 'api/githubAPI'
-import { IssueListItem } from './IssueListItem'
+import { Issue } from "api/githubAPI"
+import { IssueListItem } from "./IssueListItem"
 
-import styles from './IssuesList.module.css'
+import styles from "./IssuesList.module.css"
 
 interface Props {
   issues: Issue[]

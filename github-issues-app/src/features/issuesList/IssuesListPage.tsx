@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react"
 
-import { getIssues, getRepoDetails, IssuesResult } from 'api/githubAPI'
+import { getIssues, getRepoDetails, IssuesResult } from "api/githubAPI"
 
-import { IssuesPageHeader } from './IssuesPageHeader'
-import { IssuesList } from './IssuesList'
-import { IssuePagination, OnPageChangeCallback } from './IssuePagination'
+import { IssuesPageHeader } from "./IssuesPageHeader"
+import { IssuesList } from "./IssuesList"
+import { IssuePagination, OnPageChangeCallback } from "./IssuePagination"
 
 interface ILProps {
   org: string
@@ -14,13 +14,7 @@ interface ILProps {
   showIssueComments: (issueId: number) => void
 }
 
-export const IssuesListPage = ({
-  org,
-  repo,
-  page = 1,
-  setJumpToPage,
-  showIssueComments
-}: ILProps) => {
+export const IssuesListPage = ({ org, repo, page = 1, setJumpToPage, showIssueComments }: ILProps) => {
   const [issuesResult, setIssues] = useState<IssuesResult>({
     pageLinks: null,
     pageCount: 1,
@@ -86,11 +80,7 @@ export const IssuesListPage = ({
     <div id="issue-list-page">
       <IssuesPageHeader openIssuesCount={numIssues} org={org} repo={repo} />
       {renderedList}
-      <IssuePagination
-        currentPage={currentPage}
-        pageCount={pageCount}
-        onPageChange={onPageChanged}
-      />
+      <IssuePagination currentPage={currentPage} pageCount={pageCount} onPageChange={onPageChanged} />
     </div>
   )
 }

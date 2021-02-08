@@ -1,5 +1,5 @@
-import axios from 'axios'
-import parseLink, { Links } from 'parse-link-header'
+import axios from "axios"
+import parseLink, { Links } from "parse-link-header"
 
 export interface Label {
   id: number
@@ -20,7 +20,7 @@ export interface Issue {
   body: string
   labels: Label[]
   comments_url: string
-  state: 'open' | 'closed'
+  state: "open" | "closed"
   comments: number
 }
 
@@ -46,9 +46,7 @@ export interface IssuesResult {
 }
 
 const isLastPage = (pageLinks: Links) => {
-  return (
-    Object.keys(pageLinks).length === 2 && pageLinks.first && pageLinks.prev
-  )
+  return Object.keys(pageLinks).length === 2 && pageLinks.first && pageLinks.prev
 }
 
 const getPageCount = (pageLinks: Links) => {
@@ -64,11 +62,7 @@ const getPageCount = (pageLinks: Links) => {
   }
 }
 
-export async function getIssues(
-  org: string,
-  repo: string,
-  page = 1
-): Promise<IssuesResult> {
+export async function getIssues(org: string, repo: string, page = 1): Promise<IssuesResult> {
   const url = `https://api.github.com/repos/${org}/${repo}/issues?per_page=25&page=${page}`
 
   try {
