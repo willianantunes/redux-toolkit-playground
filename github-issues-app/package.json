@@ -19,7 +19,7 @@
     "react-markdown": "^4.1.0",
     "react-paginate": "^6.3.0",
     "react-scripts": "^3.2.0",
-    "typescript": "3.5.3"
+    "typescript": ">=3.8.0"
   },
   "scripts": {
     "start": "react-scripts start",
