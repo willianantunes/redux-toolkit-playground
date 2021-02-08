@@ -9,20 +9,28 @@ createSlice takes an options object as its argument, with these options:
     (These are sometimes referred to as "case reducers", because they're similar to a case in a switch statement)
  */
 
+let nextTodoId = 0
+
 const todosSlice = createSlice({
   name: "todos",
   initialState: [],
   reducers: {
     // The "addTodo" case reducer function will be run when an action with the type "todos/addTodo" is dispatched.
-    addTodo(state, action) {
-      const { id, text } = action.payload
-      // Notice that the addTodo reducer is calling state.push().
-      // Normally, this is bad, because the array.push() function mutates
-      // the existing array, and Redux reducers must never mutate state!.
-      // However, createSlice and createReducer wrap your function with produce from the Immer library.
-      // This means you can write code that "mutates" the state inside the reducer, and Immer will safely
-      // return a correct immutably updated result.
-      state.push({ id, text, completed: false })
+    addTodo: {
+      reducer(state, action) {
+        const { id, text } = action.payload
+        // Notice that the addTodo reducer is calling state.push().
+        // Normally, this is bad, because the array.push() function mutates
+        // the existing array, and Redux reducers must never mutate state!.
+        // However, createSlice and createReducer wrap your function with produce from the Immer library.
+        // This means you can write code that "mutates" the state inside the reducer, and Immer will safely
+        // return a correct immutably updated result.
+        state.push({ id, text, completed: false })
+      },
+      prepare(text) {
+        // Note that the "prepare callback" MUST return an object with a field called payload inside!
+        return { payload: { text, id: nextTodoId++ } }
+      },
     },
     toggleTodo(state, action) {
       const todo = state.find(todo => todo.id === action.payload)
