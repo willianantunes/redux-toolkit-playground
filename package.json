@@ -18,7 +18,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "test": "react-scripts test --env=node"
+    "test": "react-scripts test --env=node",
+    "prettier": "prettier --write '**/*.{ts,js,css,html}'"
   },
   "browserslist": [
     ">0.2%",
