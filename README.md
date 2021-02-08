@@ -5,3 +5,7 @@ I believe that, beyond studying a thing, one of the best ways to understand a te
 # TODO App
 
 The project [todo-app](todo-app) is what I used to follow [this tutorial](https://redux-toolkit.js.org/tutorials/intermediate-tutorial).
+
+# GitHub Issues App
+
+The project [github-issues-app](github-issues-app) is what I used to follow [this tutorial](https://redux-toolkit.js.org/tutorials/advanced-tutorial).
